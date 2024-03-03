@@ -1,7 +1,6 @@
 const Feedback = ({ good, neutral, bad, totalFeedback, positivePercentage }) => {
   return (
     <div>
-      <h2>Feedback statistics</h2>
       {totalFeedback > 0 ? (
         <div>
           <p>Good: {good}</p>

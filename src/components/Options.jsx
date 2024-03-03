@@ -2,7 +2,6 @@
 const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
     <div>
-      <h2>Leave your feedback</h2>
       <button onClick={() => updateFeedback('good')}>Good</button>
       <button onClick={() => updateFeedback('neutral')}>Neutral</button>
       <button onClick={() => updateFeedback('bad')}>Bad</button>
