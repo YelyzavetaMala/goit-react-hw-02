@@ -1,7 +1,8 @@
 
 import React from 'react';
 import Feedback from './components/Feedback';
-import Options  from './components/Options';
+import Options from './components/Options';
+import Notification from './components/Notification';
 import './App.css'
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
       <h1>Sip Happens Café</h1>
       <p>Please leave your feedback about our service by selecting one of the options below.</p>
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback} />
-      {totalFeedback > 0 && (
+     {totalFeedback > 0 ? (
         <Feedback
           good={feedback.good}
           neutral={feedback.neutral}
@@ -49,6 +50,8 @@ function App() {
           totalFeedback={totalFeedback}
           positivePercentage={positivePercentage}
         />
+      ) : (
+        <Notification />
       )}
     </div>
   );
