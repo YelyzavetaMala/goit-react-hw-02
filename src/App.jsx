@@ -1,12 +1,15 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Feedback from './components/Feedback';
 import Options from './components/Options';
 import Notification from './components/Notification';
 import './App.css'
 
 function App() {
-  const [feedback, setFeedback] = React.useState({ good: 0, neutral: 0, bad: 0 });
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = JSON.parse(localStorage.getItem('feedback'));
+    return savedFeedback || { good: 0, neutral: 0, bad: 0 };
+  });
 
   const updateFeedback = (type) => {
     setFeedback((prevFeedback) => ({
@@ -19,14 +22,14 @@ function App() {
     setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const savedFeedback = JSON.parse(localStorage.getItem('feedback'));
     if (savedFeedback) {
       setFeedback(savedFeedback);
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('feedback', JSON.stringify(feedback));
   }, [feedback]);
 
