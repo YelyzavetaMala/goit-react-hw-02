@@ -3,6 +3,7 @@ import  { useState, useEffect } from 'react';
 import Feedback from './components/Feedback';
 import Options from './components/Options';
 import Notification from './components/Notification';
+import Description from './components/Description';
 import './App.css'
 
 function App() {
@@ -23,13 +24,6 @@ function App() {
   };
 
   useEffect(() => {
-    const savedFeedback = JSON.parse(localStorage.getItem('feedback'));
-    if (savedFeedback) {
-      setFeedback(savedFeedback);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('feedback', JSON.stringify(feedback));
   }, [feedback]);
 
@@ -42,8 +36,7 @@ function App() {
 
   return (
     <div>
-      <h1>Sip Happens Café</h1>
-      <p>Please leave your feedback about our service by selecting one of the options below.</p>
+      <Description />
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback} />
      {totalFeedback > 0 ? (
         <Feedback
